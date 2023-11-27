@@ -1,6 +1,6 @@
 services:
-  v3.18:
+  latest:
     build:
       context: .
-      target: v3.18
+      target: latest
     image: nethost/alpine:3.18
