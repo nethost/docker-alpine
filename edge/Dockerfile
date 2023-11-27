@@ -1,7 +1,6 @@
 FROM alpine:edge as latest
-LABEL maintainer="hi@billgo.me"
 
-RUN apk add -U bash nano tzdata && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && apk del tzdata
+LABEL maintainer="hi@billgo.me"
 
 ARG GOLANG_VERSION=1.21.4
 ARG DOAS_VERSION
@@ -17,7 +16,7 @@ ENV FLUENTBIT_VERSION=${FLUENTBIT_VERSION:-"2.2.0"} \
     ZABBIX_VERSION=${ZABBIX_VERSION:-"6.4.8"} \
     DOAS_VERSION=${DOAS_VERSION:-"v6.8.2"} \
     DEBUG_MODE=FALSE \
-    TIMEZONE=Etc/GMT \
+    TIMEZONE=Asia/Shanghai \
     CONTAINER_ENABLE_SCHEDULING=TRUE \
     CONTAINER_SCHEDULING_BACKEND=cron \
     CONTAINER_ENABLE_MESSAGING=TRUE \
@@ -84,6 +83,7 @@ RUN case "$(cat /etc/os-release | grep VERSION_ID | cut -d = -f 2 | cut -d . -f 
                 acl \
                 ${alpine_ssl} \
                 bash \
+                nano \
                 bc \
                 ${busybox_extras} \
                 curl \

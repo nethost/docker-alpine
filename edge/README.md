@@ -2,7 +2,6 @@
 
 Dockerfile to build an [alpine](https://www.alpinelinux.org/) linux container image.
 
-- Currently tracking 3.5, 3.6, 3.7, 3.8, 3.9, 3.10, 3.11, 3.12, 3.13, 3.14, 3.15, 3.16, 3.17, 3.18 and edge.
 - [s6 overlay](https://github.com/just-containers/s6-overlay) enabled for PID 1 init capabilities.
 - [zabbix-agent](https://zabbix.org) (Classic and Modern) for individual container monitoring.
 - Scheduling via cron with other helpful tools (bash, curl, less, logrotate, nano, vi) for easier management.
@@ -10,51 +9,6 @@ Dockerfile to build an [alpine](https://www.alpinelinux.org/) linux container im
 - Firewall included with capabilities of monitoring logs to block remote hosts via [Fail2ban](https://github.com/fail2ban/fail2ban)
 - Logshipping capabilities to remote log analysis servers via [Fluent-Bit](https://github.com/fluent/fluent-bit)
 - Ability to update User ID and Group ID permissions dynamically.
-
-## Maintainer
-
-- [Dave Conroy](https://github/tiredofit)
-
-## Table of Contents
-
-- [About](#about)
-- [Maintainer](#maintainer)
-- [Table of Contents](#table-of-contents)
-- [Prerequisites and Assumptions](#prerequisites-and-assumptions)
-- [Installation](#installation)
-  - [Build from Source](#build-from-source)
-  - [Prebuilt Images](#prebuilt-images)
-    - [Multi Architecture](#multi-architecture)
-- [Configuration](#configuration)
-  - [Quick Start](#quick-start)
-  - [Persistent Storage](#persistent-storage)
-  - [Environment Variables](#environment-variables)
-    - [Container Options](#container-options)
-    - [Scheduling Options](#scheduling-options)
-      - [Cron Options](#cron-options)
-    - [Messaging Options](#messaging-options)
-      - [MSMTP Options](#msmtp-options)
-    - [Monitoring Options](#monitoring-options)
-      - [Zabbix Options](#zabbix-options)
-    - [Logging Options](#logging-options)
-      - [Log Shipping Parsing](#log-shipping-parsing)
-      - [Fluent-Bit Options](#fluent-bit-options)
-    - [Firewall Options|](#firewall-options)
-      - [IPTables Options](#iptables-options)
-      - [Fail2Ban Options](#fail2ban-options)
-    - [Permissions](#permissions)
-    - [Process Watchdog](#process-watchdog)
-  - [Networking](#networking)
-- [Developing / Overriding](#developing--overriding)
-- [Debug Mode](#debug-mode)
-- [Maintenance](#maintenance)
-  - [Shell Access](#shell-access)
-- [Support](#support)
-  - [Usage](#usage)
-  - [Bugfixes](#bugfixes)
-  - [Feature Requests](#feature-requests)
-  - [Updates](#updates)
-- [License](#license)
 
 ## Prerequisites and Assumptions
 
@@ -77,7 +31,7 @@ docker pull docker.io/tiredofdit/alpine:(imagetag)
 Builds of the image are also available on the [Github Container Registry](https://github.com/tiredofit/docker-alpine/pkgs/container/docker-alpine)
 
 ```
-docker pull ghcr.io/tiredofit/docker-alpine:(imagetag)
+docker pull nethost/docker-alpine:edge
 ```
 
 The following image tags are available along with their tagged release based on what's written in the [Changelog](CHANGELOG.md):
@@ -86,23 +40,10 @@ The following image tags are available along with their tagged release based on 
 | -------------- | ------- |
 | `edge`         | `:edge` |
 | `3.18`         | `:3.18` |
-| `3.17`         | `:3.17` |
-| `3.16`         | `:3.16` |
-| `3.15`         | `:3.15` |
-| `3.14`         | `:3.14` |
-| `3.13`         | `:3.13` |
-| `3.12`         | `:3.12` |
-| `3.11`         | `:3.11` |
-| `3.10`         | `:3.10` |
-| `3.9`          | `:3.9`  |
-| `3.8`          | `:3.8`  |
-| `3.7`          | `:3.7`  |
-| `3.6`          | `:3.6`  |
-| `3.5`          | `:3.5`  |
 
 #### Multi Architecture
 
-Images are built primarily for `amd64` architecture, and may also include builds for `arm/v7`, `arm64` and others. These variants are all unsupported. Consider [sponsoring](https://github.com/sponsors/tiredofit) my work so that I can work with various hardware. To see if this image supports multiple architecures, type `docker manifest (image):(tag)`
+Images are built primarily for `amd64` architecture, and may also include builds for `arm/v8`, `arm64` and others. These variants are all unsupported.
 
 ## Configuration
 
@@ -518,29 +459,6 @@ For debugging and maintenance purposes you may want access the containers shell.
 `bash
 docker exec -it (whatever your container name is) bash
 `
-
-## Support
-
-These images were built to serve a specific need in a production environment and gradually have had more functionality added based on requests from the community.
-
-### Usage
-
-- The [Discussions board](../../discussions) is a great place for working with the community on tips and tricks of using this image.
-- [Sponsor me](https://tiredofit.ca/sponsor) for personalized support
-
-### Bugfixes
-
-- Please, submit a [Bug Report](issues/new) if something isn't working as expected. I'll do my best to issue a fix in short order.
-
-### Feature Requests
-
-- Feel free to submit a feature request, however there is no guarantee that it will be added, or at what timeline.
-- [Sponsor me](https://tiredofit.ca/sponsor) regarding development of features.
-
-### Updates
-
-- Best effort to track upstream changes, More priority if I am actively using the image in a production environment.
-- [Sponsor me](https://tiredofit.ca/sponsor) for up to date releases.
 
 ## License
 
