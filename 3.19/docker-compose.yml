@@ -1,0 +1,6 @@
+services:
+  latest:
+    build:
+      context: .
+      target: latest
+    image: nethost/alpine:3.19
