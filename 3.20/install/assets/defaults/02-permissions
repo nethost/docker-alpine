@@ -1,0 +1,3 @@
+#!/command/with-contenv bash
+
+DEBUG_PERMISSIONS=${DEBUG_PERMISSIONS:-"FALSE"}
