@@ -1,4 +1,4 @@
-FROM alpine:edge as latest
+FROM alpine:edge AS latest
 
 LABEL maintainer="hi@billgo.me"
 

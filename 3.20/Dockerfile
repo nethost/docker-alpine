@@ -1,4 +1,4 @@
-FROM alpine:3.20 as latest
+FROM alpine:3.20 AS latest
 LABEL maintainer="hi@billgo.me"
 
 ARG GOLANG_VERSION=1.21.10
